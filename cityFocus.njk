@@ -1,7 +1,89 @@
 ---
 layout: layout.njk
-title: Dsshboard
 script: /js/pages/cityFocus.js
 ---
 
-{# Currently all content is dynamic but you can add content here to save on javascript #}
+<section>
+    <div class="fixed-grid">
+        <div class="grid">
+
+            <div class="cell" style="display: flex; justify-content: center; align-items: center;">
+                <img id ="cfIMG" style="width:350px; ">
+            </div>
+            
+            <!-- Max Temp and Max Wind -->
+            <div class="cell">
+                <div class="notification is-info is-dark">
+                    <h1 class="is-size-4 has-text-weight-semibold has-text-white">Today's information</h1>
+                </div>
+                <div class="fixed-grid">
+                    <div class="grid">
+                        <div class="cell is-col-span-2">
+                            <div class="box has-background-primary ">
+                                <h1 id="rn" class="title is-size-5"></h1><!--Tirtle Right Now-->
+            
+                                <p id="cardRN" ></p>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="box ">
+                                <h1 class="title is-size-5">Max Temp</h1>
+            
+                                <p id="card1" ></p>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="box ">
+                                <h1 class="title is-size-5">Max Wind</h1>
+            
+                                <p id="cardWind" ></p>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<section class="section">
+    <div class="container ">
+        <div class="notification is-info ">
+            <h1 class="is-size-5 has-text-weight-semibold  has-text-white ">Check the weather for the next hours</h1>
+        </div>
+        <div class="fixed grid">
+            <div class="grid">
+                <div id="weatherByHour"
+                    class="is-flex is-flex-direction-row is-align-items-stretch px-4"
+                    style="overflow-x: auto; gap: 1rem; width: 100%;">
+                <!-- Cards will be added here via JS -->
+            </div>
+           
+                
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!--Wehter for the next 6 days-->
+</section>
+<section class="section">
+    <div class="container ">
+        <div class="notification is-info is-dark">
+            <h1 class="is-size-5 has-text-weight-semibold  has-text-white ">Check the weather for the next 6 days</h1>
+        </div>
+        <div id="weekcards" class="columns is-multiline is-centered">
+
+            <!--This area will be filled using Javascript-->
+        </div>
+    </div>
+</section>
+
+<br><br>

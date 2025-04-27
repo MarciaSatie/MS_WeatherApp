@@ -7,7 +7,8 @@ window.dotify.components.createCardList = (city) => {
   const max = cityData.daily.temperature_2m_max[todayIndex];
   let hour = today.getHours();
   const tempNow = cityHourly.hourly.temperature_2m[hour];   
-  let weatherIMG = dotify.utils.getImg(tempNow); 
+  let weatherIMG = dotify.utils.getImg(tempNow);
+
   return `
   <a id="${city}" onclick="goToCityFous(event)">
   <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center m-1"
@@ -23,6 +24,6 @@ window.dotify.components.createCardList = (city) => {
 }
 
 function goToCityFous(event){
-  console.log("Click")
+  const cityId = event.currentTarget.id;
+  window.location.href = `/cityFocus/?city=${cityId}`;
 }
-//<img src=${weatherIMG} class="image is-64x64">

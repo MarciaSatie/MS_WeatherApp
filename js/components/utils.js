@@ -1,5 +1,14 @@
-// utils.js
+//Variables
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const today = new Date();
+const dayName = days[today.getDay()];
+const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
+let hour = today.getHours();   
+let min = today.getMinutes();
+let ampm = hour >= 12 ? 'PM' : 'AM';
+const celsius = " °C";
 
+//Image Object
 const weatherImg = {
   sun: "../assets/sun.png",
   cloudy: "../assets/cloudy.png",
@@ -10,34 +19,20 @@ const weatherImg = {
   night_rain:"../assets/night_rain.png"
 };
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const today = new Date();
-const dayName = days[today.getDay()];
-const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
-console.log(dayWeekNumber);
-let hour = today.getHours();   
-let min = today.getMinutes();
+//Functions---------------------------------------------------------------------------------
 
-const celsius = " °C";
+dotify.utils.currentTimeInfo=()=>{
+  const obj ={};
+  obj.todayIndex = dayWeekNumber;
+  obj.todayWeekday = dayName;
+  obj.hour = hour;
+  obj.min = min;
+  obj.hour12 = hour%12;
+  obj.ampm= ampm;
 
-
-dotify.utils.changeCity=(city)=>{
-
-  const cityChoice = city;
- 
-  const cityData = dotify.utils.getCityDailyObj(cityChoice);
-  const cityHourly = dotify.utils.getHourObj(cityChoice);
-  const tempNow = cityHourly.hourly.temperature_2m[hour];
-  const img  = document.getElementById("cfIMG");
-
-  dotify.utils.updateCardRightNow(tempNow,cityHourly.hourly.wind_speed_10m[hour])
-  dotify.utils.updateTitles(cityChoice);
-  dotify.utils.updateCardTemp(cityData.daily.temperature_2m_max[0]);
-  dotify.utils.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
-  dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
-  img.src =dotify.utils.getImg(tempNow); 
-  dotify.utils.wetherByTime(cityChoice);
+  return obj;
 }
+
 
 dotify.utils.wetherByTime = (city) => {
   const hourcards = document.getElementById("weatherByHour");
@@ -63,42 +58,6 @@ dotify.utils.wetherByTime = (city) => {
   }
 };
 
-
-
-// ----------------------------
-// Update weekly forecast cards (specific for CityFocus page)
-// ----------------------------
-dotify.utils.updateSmallWeekCards = (days, dayWeekNumber, cityData) => {
-  const weekcards = document.getElementById("weekcards");
-
-  const weekSliceStart = days.slice(dayWeekNumber);
-  const weekSliceEnd = days.slice(0, dayWeekNumber);
-  const weekReordered = weekSliceStart.concat(weekSliceEnd);
-
-  const todayIndex = 0;
-  let count = 0;
-
-  weekReordered.forEach((day) => {
-    const column = document.createElement("div");
-    column.className = "column is-one-fifth";
-
-    const min = cityData.daily.temperature_2m_min[todayIndex + count];
-    const max = cityData.daily.temperature_2m_max[todayIndex + count];
-    const weatherIMG = dotify.utils.getRandomImg();
-
-    column.innerHTML = `
-      <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center">
-        <h1 class="title is-size-5">${day}</h1>
-        <img src=${weatherIMG} class="image is-64x64">
-        <p>Min ${min} ${celsius}</p>
-        <p>Max ${max} ${celsius}</p>
-      </div>
-    `;
-
-    weekcards.appendChild(column);
-    count++;
-  });
-};
 
 dotify.utils.imgByDayOrNight=()=>{
   let weatherObj={};
@@ -183,36 +142,4 @@ function capitalizeFirstLetter(string) {
 dotify.utils.formatName=(currentName)=>{
   return currentName.split('_').map(word=>capitalizeFirstLetter(word)).join(' ');
 }
-
-
-dotify.utils.loadCardList=(cityList, divID)=>{
-  const cityCards = document.getElementById(divID);
-  const todayIndex = 0;
-  let count = 0;
-    cityList.forEach(city => {
-      const column = document.createElement("div");
-      column.className = "column is-one-fifth";
-
-      //console.log(currentCity);
-      const cityData =  dotify.utils.getCityDailyObj(city);
-      const min = cityData.daily.temperature_2m_min[todayIndex];
-      const max = cityData.daily.temperature_2m_max[todayIndex];
-      const cityHourly = dotify.utils.getHourObj(city);
-      const tempNow = cityHourly.hourly.temperature_2m[hour];
-      const weatherIMG = dotify.utils.getImg(tempNow); 
-
-      column.innerHTML = `
-          <a id="${city}" onclick="myFunction(event)">
-              <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center min-height: 250px;">
-                  <h1 class="title is-size-5">${dotify.utils.formatName(city)}</h1>
-                  <img src=${weatherIMG} class="image is-64x64">
-                  <p>Min ${min} ${celsius}</p>
-                  <p>Max ${max} ${celsius}</p>
-              </div>
-      `;
-
-      cityCards.appendChild(column);
-    count++;
-    });
-} 
 
