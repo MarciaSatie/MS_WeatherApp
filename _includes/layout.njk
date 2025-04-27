@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather App</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <script src="https://kit.fontawesome.com/b897380ebc.js" crossorigin="anonymous"></script>
+  <script src="/js/bulma.js"></script>
+  <script src="/js/dotify.js"></script>
+  <script src="/js/components/cardList.js"></script>
+  <script src="/js/components/utils.js"></script>
+  <script src="/data/weather_data.js"></script>
+  <script src="/js/data-store.js"></script>
+  {% if script %}
+    <script src="{{ script }}"></script>
+  {% endif %}
+</head>
+
+<body style="max-width: 1200px; margin: 0 auto;">
+  {% include "nav.njk" %}
+  {% include "header.njk" %}
+  <main>
+
+    <div id="mainContent" class="columns is-multiline box has-background-white is-centered is-vcentered">
+      {{ content | safe }}
+    </div>
+  </main>
+  <br><br>
+  {% include "footer.njk" %}
+</body>
+
+</html>
