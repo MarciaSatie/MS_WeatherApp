@@ -20,50 +20,12 @@ let min = today.getMinutes();
 
 const celsius = " °C";
 
-// Make sure dotify and dotify.utils exist
-window.dotify = window.dotify || {};
-dotify.utils = dotify.utils || {};
-
-// ----------------------------
-// Update page titles (specific for CityFocus page)
-// ----------------------------
-dotify.utils.updateTitles = (cityName) => {
-  document.getElementById("cityName").textContent = dotify.utils.formatName(cityName);
-  document.getElementById("cityWeekday").textContent = dayName;
-};
-
-// ----------------------------
-// Update main card info (specific for CityFocus page)
-// ----------------------------
-dotify.utils.updateCardRightNow = (text1, text2) => {
-  const h1Title = document.getElementById("rn");
-  h1Title.innerHTML = `Right Now  ⏰ ${hour}:${min}`;
-  const divParent = document.getElementById("cardRN");
-  divParent.innerHTML = ""; // clear existing content
-
-  const column = document.createElement("div");
-  column.innerHTML = `
-    <div class="is-flex is-justify-content-space-between" style="width: 80%;">
-      <p>Temperature: ${text1} ${celsius}</p>
-      <p>Wind: ${text2} ${celsius}</p>
-    </div>
-  `;
-  divParent.appendChild(column);
-};
-
-dotify.utils.updateCardTemp = (text) => {
-  document.getElementById("card1").textContent = text + celsius;
-};
-
-dotify.utils.updateCardWind = (text) => {
-  document.getElementById("cardWind").textContent = text;
-};
 
 dotify.utils.changeCity=(city)=>{
 
   const cityChoice = city;
  
-  const cityData = dotify.utils.getCityObj(cityChoice);
+  const cityData = dotify.utils.getCityDailyObj(cityChoice);
   const cityHourly = dotify.utils.getHourObj(cityChoice);
   const tempNow = cityHourly.hourly.temperature_2m[hour];
   const img  = document.getElementById("cfIMG");
@@ -176,7 +138,7 @@ dotify.utils.getRandomImg = () => {
 // ----------------------------
 // Get weather data object for city
 // ----------------------------
-dotify.utils.getCityObj = (cityName) => {
+dotify.utils.getCityDailyObj = (cityName) => {
   const key = `${cityName}_daily`;
   console.log("Fetching weather data for:", key);
   return dotify.weatherData[key];
@@ -232,7 +194,7 @@ dotify.utils.loadCardList=(cityList, divID)=>{
       column.className = "column is-one-fifth";
 
       //console.log(currentCity);
-      const cityData =  dotify.utils.getCityObj(city);
+      const cityData =  dotify.utils.getCityDailyObj(city);
       const min = cityData.daily.temperature_2m_min[todayIndex];
       const max = cityData.daily.temperature_2m_max[todayIndex];
       const cityHourly = dotify.utils.getHourObj(city);
