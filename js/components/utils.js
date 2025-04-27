@@ -5,6 +5,8 @@ const dayName = days[today.getDay()];
 const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
 let hour = today.getHours();   
 let min = today.getMinutes();
+// Format minutes to always have two digits
+min = min < 10 ? '0' + min : min;
 let ampm = hour >= 12 ? 'PM' : 'AM';
 const celsius = " °C";
 
