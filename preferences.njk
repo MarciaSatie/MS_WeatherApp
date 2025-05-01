@@ -1,5 +1,59 @@
 ---
 layout: layout.njk
 script: /js/pages/preferences.js
+title: Preferences
 ---
-preferences
+<section class="section">
+    <div class="container">
+        <div class="box notification is-info is-dark">
+           
+            <div class="columns is-desktop">
+
+                <!--City Favorities-->
+                <div class="column is-6"> 
+                    <div class="has-text-centered">
+                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
+                    </div> 
+                    <div class="box column has-background-info-light m-5">
+    
+                        <div  class="checkboxes ">
+                            <ul id="cardPrefrences">
+    
+                            </ul>
+                        </div>
+                        <br/>
+                        <div>
+                            <button class="button is-info is-dark m-1 p-3" type="submit" onclick="updateFavoriteCities(event)">Apply Changes</button>
+                            <button class="button is-info is-dark m-1 p-3" type="submit" onclick="resetFavoriteCities(event)">Reset Favorites</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Other Settings-->
+                <div class="column is-6"> 
+                    <div class="has-text-centered">
+                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
+                    </div> 
+                    
+                    <div class="box column has-background-info-light m-5">
+    
+                        <div  class="checkboxes ">
+                            <ul id="cardSettings">
+    
+                            </ul>
+                        </div>
+                        <br/>
+                        <div>
+                            <button id="btnPref" class="button is-info is-dark m-1 p-3" type="submit" onclick="dotify.preferences.btnPref(event)">Apply Changes</button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                </div>
+                
+              </div>
+        </div>
+    </div>
+</section>
+<br><br>
