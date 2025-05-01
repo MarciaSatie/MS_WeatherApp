@@ -1,11 +1,11 @@
 window.dotify.components.createCardList = (city) => {
-  const today = new Date();
-  const todayIndex = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
+  const today = dotify.utils.currentTimeInfo();
+  const todayIndex = today.todayIndex;// return a number  from 0 (Sunday) to 6 (Saturday)
   var cityData = dotify.utils.getCityDailyObj(city);
   const cityHourly = dotify.utils.getHourObj(city);
   const min = cityData.daily.temperature_2m_min[todayIndex];
   const max = cityData.daily.temperature_2m_max[todayIndex];
-  let hour = today.getHours();
+  let hour = today.hour;
   const tempNow = cityHourly.hourly.temperature_2m[hour];   
   let weatherIMG = dotify.utils.getImg(tempNow);
 

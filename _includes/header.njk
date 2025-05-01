@@ -3,7 +3,7 @@
     const time = dotify.utils.currentTimeInfo();
     const weekDay = dayjs().add(2, 'day').format('dddd');
     const weekDayElement = document.getElementById('weekday');
-    weekDayElement.textContent = `${weekDay}  -  ${time.hour12}:${time.min} ${ampm}`;
+    weekDayElement.textContent = `${weekDay}  -  ${time.hour12}:${time.min} ${time.ampm}`;
   });
 </script>
   
