@@ -100,7 +100,7 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
 
   function wetherByTime(city) {
     const today = dotify.utils.currentTimeInfo();
-    let hour = today.hour;
+    let hour = parseInt(today.hour);
     const hourcards = document.getElementById("weatherByHour");
     hourcards.innerHTML = ""; // clear previous content
   
@@ -114,11 +114,12 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       column.innerHTML = `
         <div class="box has-background-light p-2 has-text-centered" style="min-height: 120px;">
-          <h1 class="title is-size-5 mb-2">${(hour + i) % 24} hr</h1>
+          <h1 class="title is-size-5 mb-2 has-text-black">${(hour + i) % 24}hr</h1>
           <img src="${weatherIMG}" class="image" style="width: 60px; height: 60px;">
           <p class="is-size-5 mt-1">Temp: ${tempNow}${celsius}</p>
         </div>
-      `;
+`;
+
   
       hourcards.appendChild(column);
     }
