@@ -13,7 +13,7 @@ window.dotify.components.createCardList = (city) => {
   <a id="${city}" onclick="goToCityFous(event)">
   <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center m-1"
     style="width: 170px; min-height: 220px;">
-      <h1 class="title is-size-5">${dotify.utils.formatName(city)}</h1>
+      <h1 class="title is-size-5 has-text-white">${dotify.utils.formatName(city)}</h1>
       <div class="has-text-grey-dark">
         <img src=${weatherIMG} class="image is-64x64">
         <p>Min ${min} ${celsius}</p>
