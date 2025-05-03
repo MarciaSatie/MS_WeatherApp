@@ -82,10 +82,10 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       column.innerHTML = `
         <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center has-text-grey-darke">
-          <h1 class="title is-size-5">${day}</h1>
+          <h1 class="title is-size-5">${day} <i class="fa-solid fa-temperature-high"></i></h1>
           <img src=${weatherIMG} class="image is-64x64">
           <div class="has-text-grey-dark">
-            <p>Min ${min} ${celsius}</p>
+            <p>Min  ${min} ${celsius}</p>
             <p>Max ${max} ${celsius}</p>
            </div>
         </div>
@@ -116,7 +116,9 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
         <div class="box has-background-light p-2 has-text-centered" style="min-height: 120px;">
           <h1 class="title is-size-5 mb-2 has-text-black">${(hour + i) % 24}hr</h1>
           <img src="${weatherIMG}" class="image" style="width: 60px; height: 60px;">
-          <p class="is-size-5 mt-1">Temp: ${tempNow}${celsius}</p>
+          <p class="is-size-5 mt-1"> 
+            Temp <i class="fa-solid fa-temperature-high"></i>: ${tempNow}${celsius}
+          </p>
         </div>
 `;
 

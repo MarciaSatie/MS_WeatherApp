@@ -2,22 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const cityList = dotify.utils.getCityList();
     const suffix = "_CB";
     const retrieveStringArray = localStorage.getItem("favoriteCities");
+    const retrieveLastSelCity = localStorage.getItem("selectedCity")
     const favoriteCitiesList = JSON.parse(retrieveStringArray) || [];
-
-    // Updating Title
-
+    const dropdown = document.getElementById("dropdownOptions");
     const cardPrefrences = document.getElementById("cardPrefrences");
 
 
-
     cityList.forEach(city => {
+        const cityNameFix = dotify.utils.formatName(city);
+
+        // Favorite cities code --------------------------------------------------
         const column = document.createElement("div");
         column.classList.add("is-size-6", "mb-4");
-
        //if city is inside of array favoriteCitiesList, isChecked value  is "checked" or will be empt ( ternary expression).
         const isChecked = favoriteCitiesList.includes(city) ? "checked" : "";
-
-        const cityNameFix = dotify.utils.formatName(city);
         column.innerHTML = `
             <li>
                 <label class="checkbox">
@@ -28,7 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         cardPrefrences.appendChild(column);
+        // END of Favorite cities code--------------------------------------------------
+        // Settings code ---------------------------------------------------------------
+        
+        dropdown.innerHTML += `
+        <option value="${city}" >${cityNameFix}</option>
+        `;
+        // END ofSettings code ---------------------------------------------------------------
     });
+    dropdown.innerHTML += `<option value="${retrieveLastSelCity}">*** Last seen city ***<option>`;
+    
 });
 
     function updateFavoriteCities(event){
@@ -46,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
         console.log(checkedList);
-        let arrayToString = JSON.stringify(checkedList);   
+        const arrayToString = JSON.stringify(checkedList);   
         localStorage.setItem("favoriteCities", arrayToString);
 
     }
@@ -54,4 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function resetFavoriteCities(event){
         localStorage.removeItem("favoriteCities");
         location.reload();// refresh the page
+    }
+
+    function settingChanges(){
+        const dropdown = document.getElementById("dropdownOptions");
+        const selValue = dropdown.value;
+        localStorage.setItem("cityDefault", selValue);   
     }

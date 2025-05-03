@@ -14,7 +14,7 @@ title: Preferences
                     <div class="has-text-centered">
                         <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
                     </div> 
-                    <div class="box column has-background-info-light m-5">
+                    <div class="box column has-background-info-light m-5 has-text-black">
     
                         <div  class="checkboxes ">
                             <ul id="cardPrefrences">
@@ -32,19 +32,20 @@ title: Preferences
                 <!--Other Settings-->
                 <div class="column is-6"> 
                     <div class="has-text-centered">
-                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
+                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Settings </h1>
                     </div> 
                     
-                    <div class="box column has-background-info-light m-5">
-    
-                        <div  class="checkboxes ">
-                            <ul id="cardSettings">
-    
-                            </ul>
+                    <div class="box column has-background-info-light m-5">   
+                        <div class="columns select is-info has-text-black" id="cityDefault">
+                            <h2 class="column">Default City: </h2>
+                            <select id="dropdownOptions" class="column">
+                                <!--Wil be filled with javascript-->
+                            </select>
                         </div>
+                       
                         <br/>
                         <div>
-                            <button id="btnPref" class="button is-info is-dark m-1 p-3" type="submit" onclick="dotify.preferences.btnPref(event)">Apply Changes</button>
+                            <button id="btnPref" class="button is-info is-dark m-1 p-3" type="submit" onclick="settingChanges()">Apply Changes</button>
                         </div>
                         
                     </div>
