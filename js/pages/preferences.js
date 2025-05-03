@@ -1,11 +1,15 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const cityList = dotify.utils.getCityList();
     const suffix = "_CB";
-    const retrieveStringArray = localStorage.getItem("favoriteCities");
-    const retrieveLastSelCity = localStorage.getItem("selectedCity")
-    const favoriteCitiesList = JSON.parse(retrieveStringArray) || [];
+
+    const favoriteCitiesList = JSON.parse(dotify.components.LStorage.StringArray) || [];
     const dropdown = document.getElementById("dropdownOptions");
-    const cardPrefrences = document.getElementById("cardPrefrences");
+    const cardPrefrences = document.getElementById("cardPrefrences");   
+    console.log("selectedCity:   " + dotify.components.LStorage.LastSelCity);
+    console.log("cityDefault:   " + dotify.components.LStorage.DefaultCity);
+    console.log("lastSeenWasSelected:   " + dotify.components.LStorage.LSCWasSelected);
 
 
     cityList.forEach(city => {
@@ -28,13 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
         cardPrefrences.appendChild(column);
         // END of Favorite cities code--------------------------------------------------
         // Settings code ---------------------------------------------------------------
-        
+        const isSelected = (dotify.components.LStorage.DefaultCity === city)&&(dotify.components.LStorage.LSCWasSelected =="false") ? "selected" : "";
         dropdown.innerHTML += `
-        <option value="${city}" >${cityNameFix}</option>
+        <option value="${city}" ${isSelected}>${cityNameFix}</option>
         `;
         // END ofSettings code ---------------------------------------------------------------
     });
-    dropdown.innerHTML += `<option value="${retrieveLastSelCity}">*** Last seen city ***<option>`;
+    const isSelected = (dotify.components.LStorage.LSCWasSelected =="true") ? "selected" : "";
+    dropdown.innerHTML += `<option value="lastCity" ${isSelected}>*** Last seen city ***<option>`;
     
 });
 
@@ -65,6 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function settingChanges(){
         const dropdown = document.getElementById("dropdownOptions");
-        const selValue = dropdown.value;
-        localStorage.setItem("cityDefault", selValue);   
+        let selValue = dropdown.value;
+        if(selValue ==="lastCity"){
+            selValue =dotify.components.LastSelCity;
+            localStorage.setItem("cityDefault", selValue);
+            localStorage.setItem("lastSeenWasSelected",true);   
+        }else{
+            localStorage.setItem("cityDefault", selValue);
+            localStorage.setItem("lastSeenWasSelected",false);  
+        }
+        location.reload();// refresh the page
     }

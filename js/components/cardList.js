@@ -25,5 +25,24 @@ window.dotify.components.createCardList = (city) => {
 
 function goToCityFous(event){
   const cityId = event.currentTarget.id;
+  localStorage.setItem("selectedCity",cityId);
   window.location.href = `/cityFocus/?city=${cityId}`;
 }
+
+//I had to make each key inside of the object call a fucntion to update teh value each time the brouswer reloads.
+// Getters and setters allow you to define Object Accessors.
+//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+window.dotify.components.LStorage = {
+  get LastSelCity() {
+    return localStorage.getItem("selectedCity") || "";
+  },
+  get StringArray() {
+    return localStorage.getItem("favoriteCities") || "[]";
+  },
+  get LSCWasSelected() {
+    return localStorage.getItem("lastSeenWasSelected") || "false";
+  },
+  get DefaultCity() {
+    return localStorage.getItem("cityDefault") || "";
+  },
+};

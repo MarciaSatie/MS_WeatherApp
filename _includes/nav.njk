@@ -1,7 +1,10 @@
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedCity = localStorage.getItem("selectedCity") || "waterford";
+    const retrieveLastSelCity = localStorage.getItem("selectedCity");
+    const retrieveIFLastSeenWasSel = localStorage.getItem("lastSeenWasSelected");
+    const savedDefaultCity = localStorage.getItem("cityDefault");
 
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedCity = (retrieveIFLastSeenWasSel=="false")? localStorage.getItem("cityDefault"):localStorage.getItem("selectedCity");
       const a = document.getElementById("cFocusLink");
       a.href= `/cityFocus/?city=${savedCity}`;
    

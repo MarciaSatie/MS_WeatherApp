@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const city = params.get("city")|| "Waterford"; ;
-    localStorage.setItem("selectedCity",city);
-    const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity");
+    const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity") ||"Waterford";
 
     //changing title:
     const title = document.getElementById("page-heading");
