@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const city = params.get("city")|| "Waterford"; ;
     localStorage.setItem("selectedCity",city);
-    const savedCity = city|| localStorage.getItem("selectedCity") || "waterford";
+    const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity");
 
     //changing title:
     const title = document.getElementById("page-heading");
@@ -35,15 +35,15 @@ function changeCity(city){
 // ----------------------------
 function updateCardRightNow(text1, text2) {
     const h1Title = document.getElementById("rn");
-    h1Title.innerHTML = `Right Now  ⏰`;
+    h1Title.innerHTML = `Right Now  ${dotify.components.icons.Clock}  `;
     const divParent = document.getElementById("cardRN");
     divParent.innerHTML = ""; // clear existing content
   
     const column = document.createElement("div");
     column.innerHTML = `
       <div class="is-flex is-justify-content-space-between has-text-grey-darker" style="width: 80%;">
-        <p>Temperature: ${text1} ${celsius}</p>
-        <p>Wind: ${text2} ${celsius}</p>
+        <p>Temperature: ${dotify.components.icons.Temp} ${text1} ${celsius}</p>
+        <p>Wind:  ${dotify.components.icons.Wind} ${text2}</p>
       </div>
     `;
     divParent.appendChild(column);
@@ -82,7 +82,7 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       column.innerHTML = `
         <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center has-text-grey-darke">
-          <h1 class="title is-size-5">${day} <i class="fa-solid fa-temperature-high"></i></h1>
+          <h1 class="title is-size-5">${day} ${dotify.components.icons.Temp}</h1>
           <img src=${weatherIMG} class="image is-64x64">
           <div class="has-text-grey-dark">
             <p>Min  ${min} ${celsius}</p>
@@ -117,7 +117,7 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
           <h1 class="title is-size-5 mb-2 has-text-black">${(hour + i) % 24}hr</h1>
           <img src="${weatherIMG}" class="image" style="width: 60px; height: 60px;">
           <p class="is-size-5 mt-1"> 
-            Temp <i class="fa-solid fa-temperature-high"></i>: ${tempNow}${celsius}
+            Temp ${dotify.components.icons.Temp}: ${tempNow}${celsius}
           </p>
         </div>
 `;
