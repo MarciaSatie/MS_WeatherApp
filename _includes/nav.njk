@@ -2,12 +2,24 @@
     const retrieveLastSelCity = localStorage.getItem("selectedCity");
     const retrieveIFLastSeenWasSel = localStorage.getItem("lastSeenWasSelected");
     const savedDefaultCity = localStorage.getItem("cityDefault");
+    const path = window.location.pathname; // get URL path
+    console.log(path);
 
     document.addEventListener("DOMContentLoaded", () => {
+      
+      //adding link to cityFocus button
       const savedCity = (retrieveIFLastSeenWasSel=="false")? localStorage.getItem("cityDefault"):localStorage.getItem("selectedCity");
-      const a = document.getElementById("cFocusLink");
-      a.href= `/cityFocus/?city=${savedCity}`;
-   
+      const btnOptions =[{name:"Dashboard", a:"/index/"},
+                        {name:"City Focus",a:`/cityFocus/?city=${savedCity}`},
+                        {name:"Preferences",a:`/preferences/`}];
+
+      const navBtn = document.getElementById("navBtn");
+      btnOptions.forEach((item) => {
+        const isSelected = (item.a.indexOf(path)!==-1)? "has-text-info":"has-text-white";
+        navBtn.innerHTML +=`
+          <a href="${item.a}" class="navbar-item ${isSelected}">${item.name} </a>
+        `;
+      });
     });
   </script> 
   
@@ -23,17 +35,7 @@
       </span>
     </div>
     <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-end has-background-black">
-        <a href="/" class="navbar-item has-text-white">
-          Home
-        </a>
-        <a id="cFocusLink"  class="navbar-item has-text-white">
-          City Focus
-        </a>
-        <a href="/preferences/" class="navbar-item has-text-white">
-          Preferences
-        </a>
-
+      <div id="navBtn" class="navbar-end has-background-black">
       </div>
     </div>
   </nav>

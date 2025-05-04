@@ -40,7 +40,7 @@ window.dotify.components.LStorage = {
     return localStorage.getItem("favoriteCities") || "[]";
   },
   get LSCWasSelected() {
-    return localStorage.getItem("lastSeenWasSelected") || "false";
+    return localStorage.getItem("lastSeenWasSelected") || "true";
   },
   get DefaultCity() {
     return localStorage.getItem("cityDefault") || "";

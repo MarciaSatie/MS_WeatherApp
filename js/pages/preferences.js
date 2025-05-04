@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(checkedList);
         const arrayToString = JSON.stringify(checkedList);   
         localStorage.setItem("favoriteCities", arrayToString);
-
+        location.reload();// refresh the page
     }
 
     function resetFavoriteCities(event){
