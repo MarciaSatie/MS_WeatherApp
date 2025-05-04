@@ -18,7 +18,7 @@
         let isSelected = "has-text-white";
         
         const onlyPath = item.a.split("?")[0]; // to remove query selector from the string.
-        if (onlyPath === path) {
+        if (onlyPath.toLowerCase() === path.toLowerCase()) {
         isSelected = "has-text-info";
       }
 
