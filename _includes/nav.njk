@@ -9,16 +9,13 @@
       
       //adding link to cityFocus button
       const savedCity = (retrieveIFLastSeenWasSel=="false")? localStorage.getItem("cityDefault"):localStorage.getItem("selectedCity");
-      const btnOptions =[{name:"Dashboard", a:"/index/"},
+      const btnOptions =[{name:"Dashboard", a:"/"},
                         {name:"City Focus",a:`/cityFocus/?city=${savedCity}`},
                         {name:"Preferences",a:`/preferences/`}];
 
       const navBtn = document.getElementById("navBtn");
       btnOptions.forEach((item) => {
-        if (path === "/") {
-          path = "/index/";
-        }
-        console.log("updated path = "+path); 
+
         const isSelected = (item.a.indexOf(path)!==-1)? "has-text-info":"has-text-white";
         navBtn.innerHTML +=`
           <a href="${item.a}" class="navbar-item ${isSelected}">${item.name} </a>
