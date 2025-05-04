@@ -15,6 +15,7 @@
 
       const navBtn = document.getElementById("navBtn");
       btnOptions.forEach((item) => {
+        path =(path ==="/")? "/index/":path; 
         const isSelected = (item.a.indexOf(path)!==-1)? "has-text-info":"has-text-white";
         navBtn.innerHTML +=`
           <a href="${item.a}" class="navbar-item ${isSelected}">${item.name} </a>
