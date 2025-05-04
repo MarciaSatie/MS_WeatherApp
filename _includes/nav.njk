@@ -10,7 +10,7 @@
       //adding link to cityFocus button
       const savedCity = (retrieveIFLastSeenWasSel=="false")? localStorage.getItem("cityDefault"):localStorage.getItem("selectedCity");
       const btnOptions =[{name:"Dashboard", a:"/"},
-                        {name:"City Focus",a:`/cityFocus/?city=${savedCity}`},
+                        {name:"City Focus",a:`/cityfocus/?city=${savedCity}`},
                         {name:"Preferences",a:`/preferences/`}];
 
       const navBtn = document.getElementById("navBtn");
