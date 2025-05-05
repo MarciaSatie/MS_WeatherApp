@@ -44,12 +44,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const isSelected = (dotify.components.LStorage.LSCWasSelected =="true") ? "selected" : "";
     dropdown.innerHTML += `<option value="lastCity" ${isSelected}>*** Last seen city ***<option>`;
 
-    //windHourly checkbox.
+    //Settings: windHourly checkbox. --------------------------------------------------------------------
     const isChecked_WH = localStorage.getItem("windHourlyCB");
     if(isChecked_WH=="true"){
         const windHourlyCB = document.querySelector("#windHourlyCB");
         windHourlyCB.checked = true;
     }
+
+    //Settings: manipulate weather images:
+    const radioIMGSet =[{name:"Day",icon:"☀️"},
+                      {name:"Night", icon:dotify.components.icons.Moon},
+                      {name:"ByHour", icon:dotify.components.icons.Clock}
+                     ]
+    
+    const weatherIMG = document.querySelector(".radioWeatherIMG");
+    const selRadio= localStorage.getItem("radioWeatherIMG");
+
+    radioIMGSet.forEach((imgSet)=>{
+        let isRadioSelected= (selRadio == imgSet.name)? "checked" : "";
+
+        weatherIMG.innerHTML += `
+            <label class="radio">
+            <input type="radio" name="rsvp" value="${imgSet.name}" ${isRadioSelected} />
+                ${imgSet.name} ${imgSet.icon}
+            </label>
+        `; 
+    });
 
     
 });
@@ -93,9 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         //End of Defaul city.
 
+        //Storing information from windHourlyCB Checkbox
         const windHourlyCB = document.querySelector("#windHourlyCB");
         (windHourlyCB.checked == true)? localStorage.setItem("windHourlyCB",true) : localStorage.setItem("windHourlyCB",false);
         
+        //Storing information from radioWeatherIMG Radio 
+        const selectedWeatherIMG = document.querySelector('input[name="rsvp"]:checked');
+        if (selectedWeatherIMG) {
+        localStorage.setItem("radioWeatherIMG", selectedWeatherIMG.value);
+        }
+
+
         location.reload();// refresh the page
     }
 
