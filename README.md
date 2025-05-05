@@ -2,7 +2,7 @@
 
 
 # 🌤️ CityFocus - Weather App
-
+![Logo](./assets/logo.png)
 ## 🔗 Live Demo
 [Visit the app at Netlify](https://ms2weatherapp.netlify.app/cityfocus/?city=berlin)
 
@@ -10,14 +10,42 @@
 A dynamic and interactive weather web application that allows users to check real-time weather conditions in listed city. Developed as part of the Web Development course assignment, the app provides a clean UI, live weather data, and city-based navigation.
 
 ## 🎯 Features
--  Search weather by city name in the Dashboard page.
+-  Responsive design for desktop and mobile
+### 📄Dashboard
+-  Displays list of cities and clickin in each city will open City Focus page from this specific city.
+- Show list of favorite Cities. (Based on Preferences page.)
+### 📄City Focus
 -  City Focus page shows specific details from selecred City: 
 <br> * Weekly temperature information. (Starting from next day from today.)
 <br> * Hourly temperature for the next 6 hours. 
     
 -  Shows temperature, wind, max temperature, minimum temprature, max wind. 
--  Responsive design for desktop and mobile
--  Light/Dark mode (if applicable)
+
+### 📄Preferences
+The Preferences page allows users to customize their weather experience in the app. It is divided into two main sections:
+
+##### 🌆 Favorite Cities
+- Users can select or deselect cities to mark as favorites.
+- Selected cities may be prioritized or highlighted in teh Dashboard.
+- Options are displayed as checkboxes generated dynamically with JavaScript, oce Apply Changes button is clicked.
+- Includes buttons:
+  - **Apply Changes** – saves and load the selected favorites.
+  - **Reset Favorites** – clears all selections.
+
+##### 🛠️ Other Settings
+This section allows users to configure additional display preferences:
+- **Default City Selector**:
+  - A dropdown menu populated with available cities.
+  - Determines which city is shown clicking at City Focus nav button.
+  - ** Last Seen City ** - is the last dropdown option, this option will diplay the last city focus seen in the Dashboard as default.
+- **Weather Image Settings**:
+  - Users can select which set of images to use for displaying weather conditions (clean weather/ cloud/rainy).
+  - Choosing Day option, will display set of daylight images.
+  - Choosing for Night option, will display set of night images.
+  - Vhoosing for ByHour option, will display set of Day or Night depending on the current time the brouse is loaded. 
+- **City Focus Settings**:
+  - Option to show or hide wind data in the hourly forecast using a simple checkbox.
+- A button labeled **Apply Changes** saves and load all the updated settings. 
 
 ## 🚀 Technologies Used
 - HTML
@@ -25,24 +53,38 @@ A dynamic and interactive weather web application that allows users to check rea
 - JavaScript
 - Eleventy
 - Netlify (for deployment)
+
+## 🖼️ Images
+- Flatiicon (https://www.flaticon.com/)
+- Fontwesome (https://fontawesome.com/)
+
 ## 🧪 How to Run the Project Locally
-github link: (https://github.com/MarciaSatie/WeatherApp.git)
+Clone the repository:
+git clone  (https://github.com/MarciaSatie/WeatherApp.git)
 <br>
-    Prerequisites
-    Node.js (version 14 or higher)​
+Prerequisites
+Node.js (version 14 or higher) ​(https://nodejs.org/en/download)
 
-    Installation
-    Clone the repository:
-    git clone https://github.com/MarciaSatie/WeatherApp.git
 
-    cd WeatherApp
+## Quick install
 
-    Install dependencies:
-    npm install
+### install NPM
 
-    Run the development server: npx eleventy --serve
+```sh
+npm install
+```
 
-    The application will be available at http://localhost:8080/.
+### Run the development server:
+
+```sh
+eleventy --serve
+```
+
+### Local Host
+
+```sh
+http://localhost:8080/.
+```
 
 ## 📂 Folder Structure
 
@@ -65,10 +107,15 @@ Eleventy: Static site generator.​
 <br>JavaScript: Handles data fetching and DOM manipulation.​
 
 ## 📸 Screenshots
-### 📍 Home Page
-![Netlify deploying from github](./assets/readMe/NetlifyWithGitHub.png)
+### 📍 Netlify - Deploying from Github
+![Netlify deploying from github](./readMe/NetlifyWithGitHub_01.png)
+![Netlify deploying from github](./readMe/NetlifyWithGitHub.png)
 
 ## 🙌 Acknowledgments
+
+**Permalinks** : to customise templates locations (used at nav.js)<br>
+reference: https://www.11ty.dev/docs/permalinks/
+
 **Date**(at file: utils.js): return current Date and has methods to get current hour.
 reference:https://www.w3schools.com/jsref/jsref_obj_date.asp
 
@@ -78,7 +125,7 @@ reference: https://www.w3schools.com/jsref/met_document_createelement.asp
 **replaceAll** (at file: utils.js): replace all specified string (or char) at whole variable.
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll
 
-**event.currentTarget.id**(at dashboard.njk) this will return the value from the ID from teh module related to action click (at this case <a>).
+**event.currentTarget.id**(at dashboard.njk) this will return the value from the ID from the module related to action click (at this case <a>).
 event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction
 reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
