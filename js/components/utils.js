@@ -52,7 +52,7 @@ dotify.utils.currentTimeInfo=()=>{
 }
 
 dotify.utils.imgByDayOrNight=()=>{
-  const lSotrageChoice = localStorage.getItem("radioWeatherIMG");
+  const lSotrageChoice = localStorage.getItem("radioWeatherIMG")||"ByHour";
   const today = dotify.utils.currentTimeInfo();
   let hour = today.hour;
 
