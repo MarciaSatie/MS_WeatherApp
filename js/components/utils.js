@@ -67,12 +67,11 @@ dotify.utils.imgByDayOrNight=()=>{
       return nightObj;
       break;
     case "ByHour":
-      if(hour>=7 && hour<=19){ // day time
-        return dayObj;
-      }else{
-        return nightObj;
-      }
+      return (hour >= 7 && hour <= 19) ? dayObj : nightObj;
       break;
+    default:
+      return (hour >= 7 && hour <= 19) ? dayObj : nightObj;
+    
   }
 
 }
