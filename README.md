@@ -114,30 +114,33 @@ Eleventy: Static site generator.​
 
 ## 🙌 Acknowledgments
 
+**Object.keys** ; return an array of key values from an Object. Used at dotify.utils.getCityList<br>
+reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+
 **Permalinks** : to customise templates locations (used at nav.js)<br>
 reference: https://www.11ty.dev/docs/permalinks/
 
-**Date**(at file: utils.js): return current Date and has methods to get current hour.
+**Date**(at file: utils.js): return current Date and has methods to get current hour.<br>
 reference:https://www.w3schools.com/jsref/jsref_obj_date.asp
 
-**document.createElement**(at file: utils.js): uses Javascript to create a new HTML element at this case a div.
+**document.createElement**(at file: utils.js): uses Javascript to create a new HTML element at this case a div.<br>
 reference: https://www.w3schools.com/jsref/met_document_createelement.asp
 
-**replaceAll** (at file: utils.js): replace all specified string (or char) at whole variable.
+**replaceAll** (at file: utils.js): replace all specified string (or char) at whole variable.<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll
 
 **event.currentTarget.id**(at dashboard.njk) this will return the value from the ID from the module related to action click (at this case <a>).
-event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction
+event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
-**Tenary Expression**(at preference.njk) Just a simpler and easy to read way to write if and else. I particularly I like, and I am trying to use it more.
+**Tenary Expression**(at preference.njk) Just a simpler and easy to read way to write if and else. I particularly I like, and I am trying to use it more.<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
 
-**JSON.parse and JSON Strigfy**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need somethinf that will tranform all array's code ina  string. 
+**JSON.parse and JSON Strigfy**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need somethinf that will tranform all array's code ina  string. <br>
 reference: https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/
 
 **Regex** (at file: header.njk): Regular expression, with a partten of cahracters, allowed me to take of specific characters from a string, using .replace()
-reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes
+<br>reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes<br>
  https://www.debuggex.com/cheatsheet/regex/javascript
 
  ````
