@@ -81,7 +81,7 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       column.innerHTML = `
         <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center has-text-grey-darke">
-          <h1 class="title is-size-5">${day} ${dotify.components.icons.Temp}</h1>
+          <h1 class="title is-size-5">${day} </h1>
           <img src=${weatherIMG} class="image is-64x64">
           <div class="has-text-grey-dark">
             <p>Min  ${min} ${celsius}</p>
@@ -102,6 +102,9 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
     let hour = parseInt(today.hour);
     const hourcards = document.getElementById("weatherByHour");
     hourcards.innerHTML = ""; // clear previous content
+
+
+
   
     for (let i = 1; i <= 6; i++) {
       const cityHourly = dotify.utils.getHourObj(city);
@@ -110,18 +113,31 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       const column = document.createElement("div");
       column.className = "cell p-2"; // smaller padding
+
+      //from prefereces
+      const windNow = cityHourly.hourly.wind_speed_10m[hour + i];
+      const divWindH = document.createElement("div");
+      const isChecked_WH = localStorage.getItem("windHourlyCB");
+      if(isChecked_WH=="true"){
+        
+        divWindH.innerHTML =`
+          <p class="is-size-5 mt-1"> 
+              wind ${dotify.components.icons.Wind}: ${windNow}
+            </p>`
+            
+    }
   
       column.innerHTML = `
-        <div class="box has-background-light p-2 has-text-centered" style="min-height: 120px;">
+        <div id="hourlyCard${i}" class="box has-background-light p-2 has-text-centered" style="min-height: 120px;">
           <h1 class="title is-size-5 mb-2 has-text-black">${(hour + i) % 24}hr</h1>
           <img src="${weatherIMG}" class="image" style="width: 60px; height: 60px;">
           <p class="is-size-5 mt-1"> 
             Temp ${dotify.components.icons.Temp}: ${tempNow}${celsius}
           </p>
         </div>
-`;
-
-  
+        `;
       hourcards.appendChild(column);
+      const hourlyCard = document.getElementById(`hourlyCard${i}`);
+      hourlyCard.appendChild(divWindH);
     }
   };

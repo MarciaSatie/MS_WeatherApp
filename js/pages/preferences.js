@@ -43,6 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const isSelected = (dotify.components.LStorage.LSCWasSelected =="true") ? "selected" : "";
     dropdown.innerHTML += `<option value="lastCity" ${isSelected}>*** Last seen city ***<option>`;
+
+    //windHourly checkbox.
+    const isChecked_WH = localStorage.getItem("windHourlyCB");
+    if(isChecked_WH=="true"){
+        const windHourlyCB = document.querySelector("#windHourlyCB");
+        windHourlyCB.checked = true;
+    }
+
     
 });
 
@@ -85,8 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         //End of Defaul city.
 
-        const windHourlyCB = document.querySelector("#CF_wind_Check");
-        console.log("windHourlyCB is: "+windHourlyCB.value);
+        const windHourlyCB = document.querySelector("#windHourlyCB");
+        (windHourlyCB.checked == true)? localStorage.setItem("windHourlyCB",true) : localStorage.setItem("windHourlyCB",false);
+        
         location.reload();// refresh the page
     }
 
