@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cityAll = document.getElementById("cityAll");
   cityAll.className = "columns is-multiline box has-background-white is-centered is-vcentered"
   cardList.forEach((city) => {
-    cityAll.innerHTML = cityAll.innerHTML + dotify.components.createCardList(city);
+  (!favoriteCities.includes(city))?cityAll.innerHTML = cityAll.innerHTML + dotify.components.createCardList(city):"";
   });
 
 })
