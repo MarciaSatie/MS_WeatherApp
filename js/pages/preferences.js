@@ -1,6 +1,9 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    const weekDayElement = document.getElementById('weekday');
+    weekDayElement.remove();// remove hour from header
+
     const cityList = dotify.utils.getCityList();
     const suffix = "_CB";
 
@@ -69,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function settingChanges(){
+        // Default City.
         const dropdown = document.getElementById("dropdownOptions");
         let selValue = dropdown.value;
         if(selValue ==="lastCity"){
@@ -79,5 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("cityDefault", selValue);
             localStorage.setItem("lastSeenWasSelected",false);  
         }
+        //End of Defaul city.
+
+        const windHourlyCB = document.querySelector("#CF_wind_Check");
+        console.log("windHourlyCB is: "+windHourlyCB.value);
         location.reload();// refresh the page
     }
+
