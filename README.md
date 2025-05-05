@@ -51,6 +51,7 @@ This section allows users to configure additional display preferences:
 - HTML
 - BULMA, CSS
 - JavaScript
+- dayjs (at header.js)
 - Eleventy
 - Netlify (for deployment)
 
