@@ -52,20 +52,29 @@ dotify.utils.currentTimeInfo=()=>{
 }
 
 dotify.utils.imgByDayOrNight=()=>{
+  const lSotrageChoice = localStorage.getItem("radioWeatherIMG");
   const today = dotify.utils.currentTimeInfo();
   let hour = today.hour;
-  let weatherObj={};
-  if(hour>=7 && hour<=19){ // day time
-    weatherObj.rain = weatherImg.rain;
-    weatherObj.cloudy = weatherImg.cloudy;
-    weatherObj.clean = weatherImg.sun;
-  }else{
-    weatherObj.rain = weatherImg.night_rain;
-    weatherObj.cloudy = weatherImg.night_cloudy;
-    weatherObj.clean = weatherImg.night;
+
+  const dayObj ={rain:weatherImg.rain, cloudy:weatherImg.cloudy, clean: weatherImg.sun};
+  const nightObj = {rain:weatherImg.night_rain, cloudy:weatherImg.night_cloudy, clean: weatherImg.night};
+
+  switch(lSotrageChoice){
+    case "Day": 
+      return dayObj;
+      break;
+    case "Night":
+      return nightObj;
+      break;
+    case "ByHour":
+      if(hour>=7 && hour<=19){ // day time
+        return dayObj;
+      }else{
+        return nightObj;
+      }
+      break;
   }
 
-  return weatherObj;
 }
 
 // Will return a imag of sun, rain or cloud
