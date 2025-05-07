@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const city = params.get("city")|| "Waterford"; ;
     const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity") ||"Waterford";
 
-    //changing title:
+    //changing title int he header to display City Name:
     const title = document.getElementById("page-heading");
     title.innerHTML = dotify.utils.formatName(city);
 
@@ -102,11 +102,8 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
     let hour = parseInt(today.hour);
     const hourcards = document.getElementById("weatherByHour");
     hourcards.innerHTML = ""; // clear previous content
-
-
-
   
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 0; i <= 6; i++) {
       const cityHourly = dotify.utils.getHourObj(city);
       const tempNow = cityHourly.hourly.temperature_2m[hour + i];
       const weatherIMG = dotify.utils.getRandomImg();
