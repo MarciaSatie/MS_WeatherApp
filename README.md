@@ -108,7 +108,9 @@ Eleventy: Static site generator.​
 <br>JavaScript: Handles data fetching and DOM manipulation.​
 
 ## 📸 Screenshots
-### 📍 Netlify - Deploying from Github
+### ⛅ Weather Images Legend
+![Weather Images Legend](./readMe/WetherIMG_Legend.png)
+### 📌 Netlify - Deploying from Github
 ![Netlify deploying from github](./readMe/NetlifyWithGitHub_01.png)
 ![Netlify deploying from github](./readMe/NetlifyWithGitHub.png)
 

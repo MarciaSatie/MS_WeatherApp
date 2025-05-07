@@ -53,6 +53,7 @@ dotify.utils.currentTimeInfo=()=>{
 
 dotify.utils.imgByDayOrNight=()=>{
   const lSotrageChoice = localStorage.getItem("radioWeatherIMG")||"ByHour";// if localStorage.getItem("radioWeatherIMG") is undefined teh calue will be "ByHour".
+  
   const today = dotify.utils.currentTimeInfo();
   let hour = today.hour;
 
@@ -76,11 +77,17 @@ dotify.utils.imgByDayOrNight=()=>{
 
 }
 
-// Will return a imag of sun, rain or cloud
+// Will return a imag of sun, rain or cloud depending on Weather_Code
 dotify.utils.getImg = (tempNow) => {
+  const dayIndex = dayjs().day();
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentCity = urlParams.get('city');
+  const dailyData = dotify.weatherData[currentCity + "_daily"].daily
+  const weatherCode = dailyData.weather_code[0];
+
   const weatherObj =dotify.utils.imgByDayOrNight();
-  return tempNow <=5? weatherObj.rain:
-         tempNow <=10?weatherObj.cloudy:weatherObj.clean;
+  return weatherCode ===0? weatherObj.clean:
+        (weatherCode >= 1 && weatherCode <= 3)?weatherObj.cloudy:weatherObj.rain;
   
 };
 
