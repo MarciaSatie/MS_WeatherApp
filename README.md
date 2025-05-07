@@ -61,7 +61,7 @@ This section allows users to configure additional display preferences:
 
 ## 🧪 How to Run the Project Locally
 Clone the repository:
-git clone  (https://github.com/MarciaSatie/WeatherApp.git)
+git clone  (https://github.com/MarciaSatie/MS_WeatherApp)
 <br>
 Prerequisites
 Node.js (version 14 or higher) ​(https://nodejs.org/en/download)
