@@ -5,9 +5,7 @@ window.dotify.components.createCardList = (city) => {
   const cityHourly = dotify.utils.getHourObj(city);
   const min = cityData.daily.temperature_2m_min[todayIndex];
   const max = cityData.daily.temperature_2m_max[todayIndex];
-  let hour = today.hour;
-  const tempNow = cityHourly.hourly.temperature_2m[hour];   
-  let weatherIMG = dotify.utils.getImg(tempNow);
+  let weatherIMG = dotify.utils.getImg(0,cityData.daily);
 
   return `
   <a id="${city}" onclick="goToCityFous(event)">

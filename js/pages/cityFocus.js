@@ -25,7 +25,7 @@ function changeCity(city){
     updateCardTemp(cityData.daily.temperature_2m_max[0]);
     updateCardWind(cityData.daily.wind_speed_10m_max[0]);
     updateSmallWeekCards(today.todayIndex, cityData);
-    img.src =dotify.utils.getImg(tempNow); 
+    img.src =dotify.utils.getImg(0,cityData.daily); 
     wetherByTime(cityChoice);
   }
 
@@ -77,7 +77,7 @@ function updateSmallWeekCards ( dayWeekNumber, cityData) {
   
       const min = cityData.daily.temperature_2m_min[todayIndex + count];
       const max = cityData.daily.temperature_2m_max[todayIndex + count];
-      const weatherIMG = dotify.utils.getRandomImg();
+      const weatherIMG = dotify.utils.getImg(0+count, cityData.daily);
   
       column.innerHTML = `
         <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center has-text-grey-darke">
