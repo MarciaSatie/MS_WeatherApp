@@ -74,56 +74,56 @@ document.addEventListener("DOMContentLoaded", () => {
     
 });
 
-    function updateFavoriteCities(event){
-        console.log("you clicked the button");
-        const cityList = dotify.utils.getCityList();
-        const suffix = "_CB";
-        let checkedList =[];
+function updateFavoriteCities(event){
+    console.log("you clicked the button");
+    const cityList = dotify.utils.getCityList();
+    const suffix = "_CB";
+    let checkedList =[];
 
-        cityList.forEach(city=>{
-            var checkBox = document.getElementById(city+suffix);
-            if (checkBox.checked == true){
-                //console.log(city);
-                checkedList.push(city);
-                
-            }
-        });
-        console.log(checkedList);
-        const arrayToString = JSON.stringify(checkedList);   
-        localStorage.setItem("favoriteCities", arrayToString);
-        location.reload();// refresh the page
-    }
-
-    function resetFavoriteCities(event){
-        localStorage.removeItem("favoriteCities");
-        location.reload();// refresh the page
-    }
-
-    function settingChanges(){
-        // Default City.
-        const dropdown = document.getElementById("dropdownOptions");
-        let selValue = dropdown.value;
-        if(selValue ==="lastCity"){
-            selValue =dotify.components.LastSelCity;
-            localStorage.setItem("cityDefault", selValue);
-            localStorage.setItem("lastSeenWasSelected",true);   
-        }else{
-            localStorage.setItem("cityDefault", selValue);
-            localStorage.setItem("lastSeenWasSelected",false);  
+    cityList.forEach(city=>{
+        var checkBox = document.getElementById(city+suffix);
+        if (checkBox.checked == true){
+            //console.log(city);
+            checkedList.push(city);
+            
         }
-        //End of Defaul city.
+    });
+    console.log(checkedList);
+    const arrayToString = JSON.stringify(checkedList);   
+    localStorage.setItem("favoriteCities", arrayToString);
+    location.reload();// refresh the page
+}
 
-        //Storing information from windHourlyCB Checkbox
-        const windHourlyCB = document.querySelector("#windHourlyCB");
-        (windHourlyCB.checked == true)? localStorage.setItem("windHourlyCB",true) : localStorage.setItem("windHourlyCB",false);
-        
-        //Storing information from radioWeatherIMG Radio 
-        const selectedWeatherIMG = document.querySelector('input[name="rsvp"]:checked');
-        if (selectedWeatherIMG) {
-        localStorage.setItem("radioWeatherIMG", selectedWeatherIMG.value);
-        }
+function resetFavoriteCities(event){
+    localStorage.removeItem("favoriteCities");
+    location.reload();// refresh the page
+}
 
-
-        location.reload();// refresh the page
+function settingChanges(){
+    // Default City.
+    const dropdown = document.getElementById("dropdownOptions");
+    let selValue = dropdown.value;
+    if(selValue ==="lastCity"){
+        selValue =dotify.components.LastSelCity;
+        localStorage.setItem("cityDefault", selValue);
+        localStorage.setItem("lastSeenWasSelected",true);   
+    }else{
+        localStorage.setItem("cityDefault", selValue);
+        localStorage.setItem("lastSeenWasSelected",false);  
     }
+    //End of Defaul city.
+
+    //Storing information from windHourlyCB Checkbox
+    const windHourlyCB = document.querySelector("#windHourlyCB");
+    (windHourlyCB.checked == true)? localStorage.setItem("windHourlyCB",true) : localStorage.setItem("windHourlyCB",false);
+    
+    //Storing information from radioWeatherIMG Radio 
+    const selectedWeatherIMG = document.querySelector('input[name="rsvp"]:checked');
+    if (selectedWeatherIMG) {
+    localStorage.setItem("radioWeatherIMG", selectedWeatherIMG.value);
+    }
+
+
+    location.reload();// refresh the page
+}
 
