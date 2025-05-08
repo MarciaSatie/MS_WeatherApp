@@ -5,14 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity") ||"Waterford";
   const weekDay = params.get("weekDay"); // this gets the value of weekID from the URL
 
+  const today = dotify.utils.currentTimeInfo();
+  let weekDaysList = today.weekdays;
+  const dayWeekNumber = today.todayIndex;
+  const weekSliceStart = weekDaysList.slice(dayWeekNumber);
+  const weekSliceEnd = weekDaysList.slice(0, dayWeekNumber);
+  const weekReordered = weekSliceStart.concat(weekSliceEnd);
   
 
-  (weekDay === null) ? changeCity(savedCity) : changeCityToWeekDay(weekDay, city);
+  (weekDay === null) ? changeCity(weekReordered,savedCity) : changeCityToWeekDay(weekReordered,weekDay, city);
 
 
 });
 
-function changeCityToWeekDay(weekday,city){
+function changeCityToWeekDay(weekReordered,weekday,city){
 
   //changing title int he header to display City Name:
   const title = document.getElementById("page-heading");
@@ -35,13 +41,13 @@ function changeCityToWeekDay(weekday,city){
   updateCardRightNow(tempNow,cityHourly.hourly.wind_speed_10m[hour])
   updateCardTemp(cityData.daily.temperature_2m_max[dayIndex]);
   updateCardWind(cityData.daily.wind_speed_10m_max[dayIndex]);
-  updateSmallWeekCards(today.todayIndex, cityData,city);
+  updateSmallWeekCards(weekReordered, cityData,city);
   img.src =dotify.utils.getImg(0,cityData.daily); 
   wetherByTime(cityChoice);
 }
 
 
-function changeCity(city){
+function changeCity(weekReordered,city){
 
     //changing title int he header to display City Name:
     const title = document.getElementById("page-heading");
@@ -59,7 +65,7 @@ function changeCity(city){
     updateCardRightNow(tempNow,cityHourly.hourly.wind_speed_10m[hour])
     updateCardTemp(cityData.daily.temperature_2m_max[0]);
     updateCardWind(cityData.daily.wind_speed_10m_max[0]);
-    updateSmallWeekCards(today.todayIndex, cityData,cityChoice);
+    updateSmallWeekCards(weekReordered, cityData,cityChoice);
     img.src =dotify.utils.getImg(0,cityData.daily); 
     wetherByTime(cityChoice);
   }
@@ -94,17 +100,8 @@ function updateCardRightNow(text1, text2) {
   // ----------------------------
 // Update weekly forecast cards (specific for CityFocus page)
 // ----------------------------
-function updateSmallWeekCards ( dayWeekNumber, cityData,city) {
-
-    const timeInfo= dotify.utils.currentTimeInfo();
-    let weekDaysList = timeInfo.weekdays;
+function updateSmallWeekCards ( weekReordered, cityData,city) {
     const weekcards = document.getElementById("weekcards");
-
-    const weekSliceStart = weekDaysList.slice(dayWeekNumber);
-    const weekSliceEnd = weekDaysList.slice(0, dayWeekNumber);
-    const weekReordered = weekSliceStart.concat(weekSliceEnd);
-    scrambledArray =weekReordered;
-
     const todayIndex = 0;
     let count = 0;
   
