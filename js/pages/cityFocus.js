@@ -48,6 +48,7 @@ function changeCityToWeekDay(weekReordered,weekday,city){
   const cityChoice = city;
   const today = dotify.utils.currentTimeInfo();
   const dayIndex = weekReordered.indexOf(weekday);
+  const dayIndexNormalOrder = today.weekdays.indexOf(weekday);
   
   let hour = parseInt(today.hour);
  
@@ -60,7 +61,7 @@ function changeCityToWeekDay(weekReordered,weekday,city){
   updateCardTemp(cityData.daily.temperature_2m_max[dayIndex]);
   updateCardWind(cityData.daily.wind_speed_10m_max[dayIndex]);
   updateSmallWeekCards(weekReordered, cityData,city);
-  img.src =dotify.utils.getImg(0,cityData.daily); 
+  img.src =dotify.utils.getImg(dayIndex,cityData.daily); 
   wetherByTime(cityChoice);
 }
 

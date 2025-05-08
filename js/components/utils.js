@@ -69,9 +69,6 @@ dotify.utils.imgByDayOrNight=()=>{
 // Will return a imag of sun, rain or cloud depending on Weather_Code
 dotify.utils.getImg = (dayIndex,dailyData) => {
 
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const currentCity = urlParams.get('city');
-  // const dailyData = dotify.weatherData[currentCity + "_daily"].daily
   const weatherCode = dailyData.weather_code[dayIndex];
 
   const weatherObj =dotify.utils.imgByDayOrNight();
