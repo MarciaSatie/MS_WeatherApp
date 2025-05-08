@@ -2,17 +2,6 @@
 
 const celsius = " °C";
 
-//Image Object
-const weatherImg = {
-  sun: "../assets/sun.png",
-  cloudy: "../assets/cloudy.png",
-  rain: "../assets/rain.png",
-
-  night:"../assets/moon.png",
-  night_cloudy:"../assets/night_cloudy.png",
-  night_rain:"../assets/night_rain.png"
-};
-
 //Functions---------------------------------------------------------------------------------
 
 dotify.utils.getCityList=()=>{
@@ -52,13 +41,13 @@ dotify.utils.currentTimeInfo=()=>{
 }
 
 dotify.utils.imgByDayOrNight=()=>{
-  const lSotrageChoice = localStorage.getItem("radioWeatherIMG")||"ByHour";// if localStorage.getItem("radioWeatherIMG") is undefined teh calue will be "ByHour".
+  const lSotrageChoice = localStorage.getItem("radiodotify.weatherImg ")||"ByHour";// if localStorage.getItem("radiodotify.weatherImg ") is undefined teh calue will be "ByHour".
   
   const today = dotify.utils.currentTimeInfo();
   let hour = today.hour;
 
-  const dayObj ={rain:weatherImg.rain, cloudy:weatherImg.cloudy, clean: weatherImg.sun};
-  const nightObj = {rain:weatherImg.night_rain, cloudy:weatherImg.night_cloudy, clean: weatherImg.night};
+  const dayObj ={rain:dotify.weatherImg .rain, cloudy:dotify.weatherImg .cloudy, clean: dotify.weatherImg .sun};
+  const nightObj = {rain:dotify.weatherImg .night_rain, cloudy:dotify.weatherImg .night_cloudy, clean: dotify.weatherImg .night};
 
   switch(lSotrageChoice){
     case "Day": 
