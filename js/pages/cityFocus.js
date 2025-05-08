@@ -22,10 +22,28 @@ function changeCityToWeekDay(weekReordered,weekday,city){
 
   //changing title int he header to display City Name:
   const title = document.getElementById("page-heading");
-  title.innerHTML = dotify.utils.formatName(weekday);
+  title.innerHTML = weekday;
 
+  const subTitle = document.getElementById("weekday");
+  subTitle.textContent="ss";
+  console.log("cityCard is loading");
   const cf_dayInfo = document.getElementById("cf_dayInfo");
   cf_dayInfo.innerHTML = `${weekday}'s information`;
+
+  // Get today's date and find the next Friday
+  const nextFriday = dayjs().day(5).add(1, 'week'); // `5` is Friday in dayjs (Sunday = 0, Monday = 1, etc.)
+
+  // Get the day and month
+  const day = nextFriday.date(); // Get the day of the month
+  const month = nextFriday.month() + 1; // Get the month (0-based, so add 1)
+
+  const weekDayElement = document.getElementById('weekday');
+  if(weekDayElement){ // if is not null will run the code (to avoid error when at preferences remove this tag)
+    weekDayElement.remove();// remove hour from header
+  }
+
+  const headerTime = document.getElementById("headerTime");
+  headerTime.innerHTML = `${dotify.utils.formatName(city)} : `; 
 
   const cityChoice = city;
   const today = dotify.utils.currentTimeInfo();
