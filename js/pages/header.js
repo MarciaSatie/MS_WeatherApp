@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentMinute = now.minute();
     const weekDay = now.format("dddd")
     const weekDayElement = document.getElementById('weekday');
+    const currentTimeDiv = document.getElementById('headerTime');
     if(weekDayElement){ // if is not null will run the code (to avoid error when at preferences remove this tag)
-      weekDayElement.textContent = `${currentDate}  ( ${weekDay}) -  ${currentHour}:${currentMinute} ${time.ampm}`;
+      weekDayElement.textContent = `${currentDate}  (${weekDay}) `;
+      console.log("header is loading");
     }
+    currentTimeDiv.textContent +=` ${currentHour}:${currentMinute} ${time.ampm}`;
   });
