@@ -115,42 +115,49 @@ Eleventy: Static site generator.​
 ![Netlify deploying from github](./readMe/NetlifyWithGitHub.png)
 
 ## 🙌 Acknowledgments
-
 **Object.keys** ; return an array of key values from an Object. Used at dotify.utils.getCityList<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+
 
 **Permalinks** : to customise templates locations (used at nav.js)<br>
 reference: https://www.11ty.dev/docs/permalinks/
 
+
 **Date**(at file: utils.js): return current Date and has methods to get current hour.<br>
 reference:https://www.w3schools.com/jsref/jsref_obj_date.asp
+
 
 **document.createElement**(at file: utils.js): uses Javascript to create a new HTML element at this case a div.<br>
 reference: https://www.w3schools.com/jsref/met_document_createelement.asp
 
+
 **replaceAll** (at file: utils.js): replace all specified string (or char) at whole variable.<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll
+
 
 **event.currentTarget.id**(at dashboard.njk) this will return the value from the ID from the module related to action click (at this case <a>).
 event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
-**Tenary Expression**(at preference.njk) Just a simpler and easy to read way to write if and else. I particularly I like, and I am trying to use it more.<br>
+
+**Ternary Expression**(at preference.njk) Just a simpler and easy to read way to write if and else. I particularly I like, and I am trying to use it more.<br>
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
 
-**JSON.parse and JSON Strigfy**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need somethinf that will tranform all array's code ina  string. <br>
+
+**JSON.parse and JSON Stringify**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need something that will transform all array's code ina  string. <br>
 reference: https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/
 
-**Regex** (at file: header.njk): Regular expression, with a partten of cahracters, allowed me to take of specific characters from a string, using .replace()
+
+**Regex** (at file: header.njk): Regular expression, with a pattern of characters, allowed me to take of specific characters from a string, using .replace()
 <br>reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes<br>
  https://www.debuggex.com/cheatsheet/regex/javascript
 
+
  ````
-regex : /\/+$/ => 
-/content/ -> what is between slashes will be count in cosideration for regex .
-\/+ ->  To match this / character literally (thsi what I want to get rid off) , escape it with itself. In other words to search for \ use \// (+ -> 1 more, at this case to repit "/" to achive \//).
+regex : /\/+$/ =>
+/content/ -> what is between slashes will be counted in consideration for regex .
+\/+ ->  To match this / character literally (this what I want to get rid off) , escape it with itself. In other words, to search for \ use \// (+ -> 1 more, in this case to repeat "/" to achieve \//).
 $ -> end of the string
-````
 
 ## 🙋‍♂️ Author
 Made with ❤️ by [Marcia Satie](https://github.com/yourusername)
