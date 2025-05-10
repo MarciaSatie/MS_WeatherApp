@@ -1,8 +1,11 @@
 let scrambledArray=[];
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  const city = (params.get("city")!==null)? params.get("city"): "Waterford"; 
-  const savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity") ||"Waterford";
+  let city = params.get("city"); 
+  if(city === undefined){city ="Waterford";}
+  let savedCity = city|| localStorage.getItem("defaultCity") || localStorage.getItem("SelectedCity") ||"Waterford";
+  if(savedCity == "null"){savedCity ="waterford";}
+  console.log("savedCity: "+savedCity+ " || type: "+typeof savedCity);
   const weekDay = params.get("weekDay"); // this gets the value of weekID from the URL
 
   const today = dotify.utils.currentTimeInfo();
@@ -12,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const weekSliceEnd = weekDaysList.slice(0, dayWeekNumber);
   const weekReordered = weekSliceStart.concat(weekSliceEnd);
   
-  if(savedCity === null)savedCity ="Waterford";
+  
+  
 
   (weekDay === null) ? changeCity(weekReordered,savedCity) : changeCityToWeekDay(weekReordered,weekDay, city);
 
