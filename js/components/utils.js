@@ -41,8 +41,9 @@ dotify.utils.currentTimeInfo=()=>{
 }
 
 dotify.utils.imgByDayOrNight=()=>{
-  const lSotrageChoice = localStorage.getItem("radiodotify.weatherImg ")||"ByHour";// if localStorage.getItem("radiodotify.weatherImg ") is undefined teh calue will be "ByHour".
-  
+  const lSotrageChoice = localStorage.getItem("radioWeatherIMG");// if localStorage.getItem("radioWeatherIMG ") is undefined teh calue will be "ByHour".
+  console.log("lSotrageChoice: "+lSotrageChoice);
+
   const today = dotify.utils.currentTimeInfo();
   let hour = today.hour;
 
