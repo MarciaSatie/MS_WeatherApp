@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const weekSliceEnd = weekDaysList.slice(0, dayWeekNumber);
   const weekReordered = weekSliceStart.concat(weekSliceEnd);
   
+  if(savedCity == null)savedCity ="Waterford";
 
   (weekDay === null) ? changeCity(weekReordered,savedCity) : changeCityToWeekDay(weekReordered,weekDay, city);
 
