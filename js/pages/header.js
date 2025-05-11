@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const time = dotify.utils.currentTimeInfo();
     const now = dayjs();
-    const currentHour = now.hour()%12;
+    const currentHour = (now.hour()!==12)?now.hour()%12:now.hour();
     const currentDate = now.format('DD [of] MMMM');
     let currentMinute = now.minute();
     if(currentMinute<10)currentMinute='0'+currentMinute;
