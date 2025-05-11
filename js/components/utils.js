@@ -114,7 +114,9 @@ dotify.utils.getHourObj = (cityName) => {
 // split(space) to create an array if there is more than 1 word
 // map.word
 // ----------------------------
-dotify.utils.formattedCities = (arrayCity) =>{
+dotify.utils.formattedCities = (eleventy --setInterval(() => {
+  
+}, interval);) =>{
   const newArray = arrayCity.map(city => {
     // Split the city into words
     const words = city.split('_');
